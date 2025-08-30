@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct TimeToNextEvent_Watch_AppApp: App {
+struct TimeToNextEventApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                viewModel: CountdownViewModel(
+                    eventProvider: EventKitEventProvider()
+                )
+            )
         }
     }
 }
