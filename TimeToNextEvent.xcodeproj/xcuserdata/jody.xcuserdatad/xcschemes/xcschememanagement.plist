@@ -4,15 +4,23 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>TimeToNext Watch WidgetExtension.xcscheme_^#shared#^_</key>
+		<key>TimeToNextEvent Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>TimeToNextEvent Watch App.xcscheme_^#shared#^_</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>C8E5C0A82E6392AD006A78A6</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C8E5C0AE2E6392AD006A78A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

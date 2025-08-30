@@ -9,13 +9,16 @@ import SwiftUI
 
 @main
 struct TimeToNextEventApp: App {
+    @StateObject private var settings = SettingsStore()
     var body: some Scene {
         WindowGroup {
             ContentView(
                 viewModel: CountdownViewModel(
-                    eventProvider: EventKitEventProvider()
+                    eventProvider: EventKitEventProvider(),
+                    settings: settings
                 )
             )
+            .environmentObject(settings) // Make settings available to the UI.
         }
     }
 }

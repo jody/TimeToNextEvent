@@ -8,39 +8,53 @@
 import Foundation
 import EventKit
 
+@MainActor
 final class EventKitEventProvider: EventProvider {
     private let store = EKEventStore()
 
     func requestAccess() async throws -> Bool {
         try await withCheckedThrowingContinuation { cont in
+            // Completion can arrive on any queue; we're on the main actor at call site.
             store.requestFullAccessToEvents { granted, error in
-                if let error { cont.resume(throwing: error); return }
-                cont.resume(returning: granted)
+                if let error {
+                    cont.resume(throwing: error)
+                } else {
+                    cont.resume(returning: granted)
+                }
             }
         }
     }
 
-    func nextEvent(after date: Date) async -> CalendarEvent? {
-        // Search a window into the future (e.g., 14 days). Adjust if you prefer.
+    func nextEvent(
+        after date: Date,
+        allowedCalendarIDs: Set<String>?,
+        searchWindowDays: Int
+    ) async -> CalendarEvent? {
+        let days = max(searchWindowDays, 1)
         let start = date
-        let end = Calendar.current.date(byAdding: .day, value: 14, to: date) ?? date.addingTimeInterval(14 * 24 * 3600)
+        let end = Calendar.current.date(byAdding: .day, value: days, to: date)
+            ?? date.addingTimeInterval(TimeInterval(days) * 24 * 3600)
 
-        let calendars = store.calendars(for: .event)
+        var calendars = store.calendars(for: .event)
+        if let allowed = allowedCalendarIDs, !allowed.isEmpty {
+            let allowedSet = Set(allowed)
+            calendars = calendars.filter { allowedSet.contains($0.calendarIdentifier) }
+        }
+
         let predicate = store.predicateForEvents(withStart: start, end: end, calendars: calendars)
 
-        // EventKit calls should be on a background queue to keep UI snappy.
-        return await withCheckedContinuation { cont in
-            DispatchQueue.global(qos: .userInitiated).async {
-                let events = self.store.events(matching: predicate)
-                    .filter { $0.startDate > date } // strictly after "now"
-                    .sorted(by: { $0.startDate < $1.startDate })
+        // Lightweight query on the main actor (no @Sendable capture problems).
+        let events = store.events(matching: predicate)
+            .filter { $0.startDate > date }
+            .sorted { $0.startDate < $1.startDate }
 
-                if let e = events.first {
-                    cont.resume(returning: CalendarEvent(title: e.title, startDate: e.startDate))
-                } else {
-                    cont.resume(returning: nil)
-                }
-            }
+        if let e = events.first {
+            return CalendarEvent(
+                title: e.title,
+                startDate: e.startDate,
+                calendarIdentifier: e.calendar.calendarIdentifier
+            )
         }
+        return nil
     }
 }

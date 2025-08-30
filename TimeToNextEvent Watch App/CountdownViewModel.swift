@@ -21,15 +21,25 @@ final class CountdownViewModel: ObservableObject {
     @Published private(set) var state: State = .requestingAccess
 
     private let eventProvider: EventProvider
+    private let settings: SettingsStore
+    private var cancellables = Set<AnyCancellable>()
+
     private var ticker: AnyCancellable?
     private var currentEvent: CalendarEvent?
     private var lastComputedMinute: Int?
 
-    // Update cadence: once per second for snappy UI; we still format to minutes.
     private let tickInterval: TimeInterval = 1.0
 
-    init(eventProvider: EventProvider) {
+    init(eventProvider: EventProvider, settings: SettingsStore) {
         self.eventProvider = eventProvider
+        self.settings = settings
+
+        // Refresh when user changes calendars or window.
+        settings.$selectedCalendarIDs
+            .merge(with: settings.$searchWindowDays.map { _ in Set<String>() }) // trigger on either change
+            .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+            .sink { [weak self] _ in Task { await self?.refreshEvent() } }
+            .store(in: &cancellables)
     }
 
     func start() {
@@ -63,7 +73,6 @@ final class CountdownViewModel: ObservableObject {
     }
 
     private func tick() {
-        // To avoid recomputing every second, only recompute when the minute changes
         let minute = Calendar.current.component(.minute, from: Date())
         if minute != lastComputedMinute {
             lastComputedMinute = minute
@@ -78,7 +87,6 @@ final class CountdownViewModel: ObservableObject {
         }
         let now = Date()
         if event.startDate <= now {
-            // Event started; find the next one
             await refreshEvent()
             return
         }
@@ -90,7 +98,11 @@ final class CountdownViewModel: ObservableObject {
 
     private func refreshEvent() async {
         let now = Date()
-        let next = await eventProvider.nextEvent(after: now)
+        let next = await eventProvider.nextEvent(
+            after: now,
+            allowedCalendarIDs: settings.selectedCalendarIDs.isEmpty ? nil : settings.selectedCalendarIDs,
+            searchWindowDays: settings.searchWindowDays
+        )
         await MainActor.run {
             self.currentEvent = next
             if let e = next {
@@ -102,7 +114,6 @@ final class CountdownViewModel: ObservableObject {
         }
     }
 
-    /// days, hours, minutes (no seconds) with zero padding for H/M
     static func formatCountdown(from: Date, to: Date) -> String {
         let comps = Calendar.current.dateComponents([.day, .hour, .minute], from: from, to: to)
         let d = max(comps.day ?? 0, 0)

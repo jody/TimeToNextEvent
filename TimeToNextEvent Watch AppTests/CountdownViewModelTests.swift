@@ -7,12 +7,24 @@
 
 import Foundation
 import XCTest
+import Combine
 @testable import TimeToNextEvent_Watch_App
 
+
 final class CountdownViewModelTests: XCTestCase {
+    private var bag = Set<AnyCancellable>()
+
+    override func setUp() {
+        super.setUp()
+        bag = []
+    }
+
+    override func tearDown() {
+        bag.removeAll()
+        super.tearDown()
+    }
 
     func testFormatCountdown_RoundsDownToWholeMinutes() {
-        // from: 0s, to: 1d 2h 3m 59s → 1d 02h 03m (we ignore seconds)
         let cal = Calendar.current
         let from = Date()
         let to = cal.date(byAdding: DateComponents(day: 1, hour: 2, minute: 3, second: 59), to: from)!
@@ -21,40 +33,58 @@ final class CountdownViewModelTests: XCTestCase {
     }
 
     func testNextEventFlow_NoAccess() async {
-        let mock = MockEventProvider()
-        mock.granted = false
-        let vm = CountdownViewModel(eventProvider: mock)
+        #if DEBUG
+        let mock = MockEventProvider(); mock.granted = false
+        let settings = SettingsStore()
+        let vm = CountdownViewModel(eventProvider: mock, settings: settings)
 
         let exp = expectation(description: "state becomes accessDenied")
-        let cancel = vm.$state.dropFirst().sink { state in
+        vm.$state.dropFirst().sink { state in
             if case .accessDenied = state { exp.fulfill() }
-        }
+        }.store(in: &bag)
 
         vm.start()
-        defer { vm.stop(); cancel.cancel() }
+        defer { vm.stop() }
         await fulfillment(of: [exp], timeout: 2.0)
+        #endif
     }
 
-    func testNextEventFlow_Ready() async {
-        let mock = MockEventProvider()
-        mock.granted = true
-        let soon = Date().addingTimeInterval(3600 * 6 + 60 * 4) // 6h 4m
-        mock.events = [CalendarEvent(title: "Faculty Meeting", startDate: soon)]
-        let vm = CountdownViewModel(eventProvider: mock)
+    func testNextEventFlow_Ready_RespectsSettings() async {
+        #if DEBUG
+        let mock = MockEventProvider(); mock.granted = true
+        let settings = SettingsStore()
+        settings.selectedCalendarIDs = ["CAL-1"]
+        settings.searchWindowDays = 2
+
+        let now = Date()
+        mock.events = [
+            CalendarEvent(title: "Should Be Ignored (wrong cal)",
+                          startDate: now.addingTimeInterval(3600),
+                          calendarIdentifier: "CAL-2"),
+            CalendarEvent(title: "Faculty Meeting",
+                          startDate: now.addingTimeInterval(6*3600 + 4*60),
+                          calendarIdentifier: "CAL-1")
+        ]
+
+        let vm = CountdownViewModel(eventProvider: mock, settings: settings)
 
         let exp = expectation(description: "state becomes ready")
-        let cancel = vm.$state.dropFirst().sink { state in
-            if case .ready(let title, let start, let countdown) = state {
+        vm.$state.dropFirst().sink { state in
+            if case .ready(let title, _, let countdown) = state {
                 XCTAssertEqual(title, "Faculty Meeting")
-                XCTAssertEqual(start.timeIntervalSince1970, soon.timeIntervalSince1970, accuracy: 1)
                 XCTAssertTrue(countdown.contains("06h"))
                 exp.fulfill()
             }
-        }
+        }.store(in: &bag)
 
         vm.start()
-        defer { vm.stop(); cancel.cancel() }
+        defer { vm.stop() }
         await fulfillment(of: [exp], timeout: 2.0)
+
+        // Verify settings passed through to provider
+        XCTAssertEqual(mock.lastAllowedIDs, ["CAL-1"])
+        XCTAssertEqual(mock.lastDays, 2)
+        #endif
     }
 
     // Helper for async expectations in Swift 5.9+

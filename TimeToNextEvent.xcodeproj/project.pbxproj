@@ -6,21 +6,7 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		C8E5C0B02E6392AD006A78A6 /* TimeToNextEvent Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C8E5C0AF2E6392AD006A78A6 /* TimeToNextEvent Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C8E5C0F42E639A57006A78A6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5C0F32E639A57006A78A6 /* WidgetKit.framework */; };
-		C8E5C0F62E639A57006A78A6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5C0F52E639A57006A78A6 /* SwiftUI.framework */; };
-		C8E5C1012E639A58006A78A6 /* TimeToNext Watch WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C8E5C0F12E639A57006A78A6 /* TimeToNext Watch WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
-		C8E5C0B12E6392AD006A78A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C8E5C0A32E6392AD006A78A6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C8E5C0AE2E6392AD006A78A6;
-			remoteInfo = "TimeToNextEvent Watch App";
-		};
 		C8E5C0BF2E6392AE006A78A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C8E5C0A32E6392AD006A78A6 /* Project object */;
@@ -35,34 +21,15 @@
 			remoteGlobalIDString = C8E5C0AE2E6392AD006A78A6;
 			remoteInfo = "TimeToNextEvent Watch App";
 		};
-		C8E5C0FF2E639A58006A78A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C8E5C0A32E6392AD006A78A6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C8E5C0F02E639A57006A78A6;
-			remoteInfo = "TimeToNext Watch WidgetExtension";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C8E5C0D52E6392AE006A78A6 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				C8E5C0B02E6392AD006A78A6 /* TimeToNextEvent Watch App.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C8E5C1062E639A58006A78A6 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C8E5C1012E639A58006A78A6 /* TimeToNext Watch WidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,24 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C8E5C0A92E6392AD006A78A6 /* TimeToNextEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeToNextEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E5C0AF2E6392AD006A78A6 /* TimeToNextEvent Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeToNextEvent Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E5C0BE2E6392AE006A78A6 /* TimeToNextEvent Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TimeToNextEvent Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E5C0C82E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TimeToNextEvent Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8E5C0F12E639A57006A78A6 /* TimeToNext Watch WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TimeToNext Watch WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8E5C0F32E639A57006A78A6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		C8E5C0F52E639A57006A78A6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C8E5C1022E639A58006A78A6 /* Exceptions for "TimeToNext Watch Widget" folder in "TimeToNext Watch WidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = C8E5C0F02E639A57006A78A6 /* TimeToNext Watch WidgetExtension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C8E5C0B32E6392AD006A78A6 /* TimeToNextEvent Watch App */ = {
@@ -103,14 +56,6 @@
 		C8E5C0CB2E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "TimeToNextEvent Watch AppUITests";
-			sourceTree = "<group>";
-		};
-		C8E5C0F72E639A57006A78A6 /* TimeToNext Watch Widget */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C8E5C1022E639A58006A78A6 /* Exceptions for "TimeToNext Watch Widget" folder in "TimeToNext Watch WidgetExtension" target */,
-			);
-			path = "TimeToNext Watch Widget";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -137,15 +82,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C8E5C0EE2E639A57006A78A6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C8E5C0F62E639A57006A78A6 /* SwiftUI.framework in Frameworks */,
-				C8E5C0F42E639A57006A78A6 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -155,8 +91,6 @@
 				C8E5C0B32E6392AD006A78A6 /* TimeToNextEvent Watch App */,
 				C8E5C0C12E6392AE006A78A6 /* TimeToNextEvent Watch AppTests */,
 				C8E5C0CB2E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests */,
-				C8E5C0F72E639A57006A78A6 /* TimeToNext Watch Widget */,
-				C8E5C0F22E639A57006A78A6 /* Frameworks */,
 				C8E5C0AA2E6392AD006A78A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -164,46 +98,16 @@
 		C8E5C0AA2E6392AD006A78A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C8E5C0A92E6392AD006A78A6 /* TimeToNextEvent.app */,
 				C8E5C0AF2E6392AD006A78A6 /* TimeToNextEvent Watch App.app */,
 				C8E5C0BE2E6392AE006A78A6 /* TimeToNextEvent Watch AppTests.xctest */,
 				C8E5C0C82E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests.xctest */,
-				C8E5C0F12E639A57006A78A6 /* TimeToNext Watch WidgetExtension.appex */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C8E5C0F22E639A57006A78A6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C8E5C0F32E639A57006A78A6 /* WidgetKit.framework */,
-				C8E5C0F52E639A57006A78A6 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C8E5C0A82E6392AD006A78A6 /* TimeToNextEvent */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C8E5C0D62E6392AE006A78A6 /* Build configuration list for PBXNativeTarget "TimeToNextEvent" */;
-			buildPhases = (
-				C8E5C0A72E6392AD006A78A6 /* Resources */,
-				C8E5C0D52E6392AE006A78A6 /* Embed Watch Content */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C8E5C0B22E6392AD006A78A6 /* PBXTargetDependency */,
-			);
-			name = TimeToNextEvent;
-			packageProductDependencies = (
-			);
-			productName = TimeToNextEvent;
-			productReference = C8E5C0A92E6392AD006A78A6 /* TimeToNextEvent.app */;
-			productType = "com.apple.product-type.application.watchapp2-container";
-		};
 		C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8E5C0D22E6392AE006A78A6 /* Build configuration list for PBXNativeTarget "TimeToNextEvent Watch App" */;
@@ -216,7 +120,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				C8E5C1002E639A58006A78A6 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				C8E5C0B32E6392AD006A78A6 /* TimeToNextEvent Watch App */,
@@ -274,28 +177,6 @@
 			productReference = C8E5C0C82E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		C8E5C0F02E639A57006A78A6 /* TimeToNext Watch WidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C8E5C1032E639A58006A78A6 /* Build configuration list for PBXNativeTarget "TimeToNext Watch WidgetExtension" */;
-			buildPhases = (
-				C8E5C0ED2E639A57006A78A6 /* Sources */,
-				C8E5C0EE2E639A57006A78A6 /* Frameworks */,
-				C8E5C0EF2E639A57006A78A6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C8E5C0F72E639A57006A78A6 /* TimeToNext Watch Widget */,
-			);
-			name = "TimeToNext Watch WidgetExtension";
-			packageProductDependencies = (
-			);
-			productName = "TimeToNext Watch WidgetExtension";
-			productReference = C8E5C0F12E639A57006A78A6 /* TimeToNext Watch WidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -306,9 +187,6 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					C8E5C0A82E6392AD006A78A6 = {
-						CreatedOnToolsVersion = 16.4;
-					};
 					C8E5C0AE2E6392AD006A78A6 = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -319,9 +197,6 @@
 					C8E5C0C72E6392AE006A78A6 = {
 						CreatedOnToolsVersion = 16.4;
 						TestTargetID = C8E5C0AE2E6392AD006A78A6;
-					};
-					C8E5C0F02E639A57006A78A6 = {
-						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
@@ -339,23 +214,14 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C8E5C0A82E6392AD006A78A6 /* TimeToNextEvent */,
 				C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */,
 				C8E5C0BD2E6392AE006A78A6 /* TimeToNextEvent Watch AppTests */,
 				C8E5C0C72E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests */,
-				C8E5C0F02E639A57006A78A6 /* TimeToNext Watch WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C8E5C0A72E6392AD006A78A6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C8E5C0AD2E6392AD006A78A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,13 +237,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C8E5C0C62E6392AE006A78A6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C8E5C0EF2E639A57006A78A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -408,21 +267,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C8E5C0ED2E639A57006A78A6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C8E5C0B22E6392AD006A78A6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */;
-			targetProxy = C8E5C0B12E6392AD006A78A6 /* PBXContainerItemProxy */;
-		};
 		C8E5C0C02E6392AE006A78A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */;
@@ -432,11 +279,6 @@
 			isa = PBXTargetDependency;
 			target = C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */;
 			targetProxy = C8E5C0C92E6392AE006A78A6 /* PBXContainerItemProxy */;
-		};
-		C8E5C1002E639A58006A78A6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C8E5C0F02E639A57006A78A6 /* TimeToNext Watch WidgetExtension */;
-			targetProxy = C8E5C0FF2E639A58006A78A6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -583,7 +425,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
@@ -614,38 +456,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
-			};
-			name = Release;
-		};
-		C8E5C0D72E6392AE006A78A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5A3NSS82K5;
-				INFOPLIST_KEY_CFBundleDisplayName = TimeToNextEvent;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jodypaul.TimeToNextEvent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		C8E5C0D82E6392AE006A78A6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5A3NSS82K5;
-				INFOPLIST_KEY_CFBundleDisplayName = TimeToNextEvent;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jodypaul.TimeToNextEvent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -665,7 +476,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeToNextEvent Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TimeToNextEvent Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
@@ -686,7 +497,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TimeToNextEvent Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TimeToNextEvent Watch App";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -705,7 +516,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = "TimeToNextEvent Watch App";
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
@@ -725,68 +536,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				TEST_TARGET_NAME = "TimeToNextEvent Watch App";
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
-			};
-			name = Release;
-		};
-		C8E5C1042E639A58006A78A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5A3NSS82K5;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TimeToNext Watch Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TimeToNext Watch Widget";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jodypaul.TimeToNextEvent.watchkitapp.TimeToNext-Watch-Widget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
-			};
-			name = Debug;
-		};
-		C8E5C1052E639A58006A78A6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5A3NSS82K5;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TimeToNext Watch Widget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TimeToNext Watch Widget";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jodypaul.TimeToNextEvent.watchkitapp.TimeToNext-Watch-Widget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
@@ -811,15 +561,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C8E5C0D62E6392AE006A78A6 /* Build configuration list for PBXNativeTarget "TimeToNextEvent" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C8E5C0D72E6392AE006A78A6 /* Debug */,
-				C8E5C0D82E6392AE006A78A6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C8E5C0D92E6392AE006A78A6 /* Build configuration list for PBXNativeTarget "TimeToNextEvent Watch AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -834,15 +575,6 @@
 			buildConfigurations = (
 				C8E5C0DD2E6392AE006A78A6 /* Debug */,
 				C8E5C0DE2E6392AE006A78A6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C8E5C1032E639A58006A78A6 /* Build configuration list for PBXNativeTarget "TimeToNext Watch WidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C8E5C1042E639A58006A78A6 /* Debug */,
-				C8E5C1052E639A58006A78A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
