@@ -40,7 +40,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 6;
+			dstSubfolderSpec = 13;
 			files = (
 				C8250E6C2E63EB9300C7A235 /* TimeToNextEventWidgetsExtension.appex in CopyFiles */,
 			);
