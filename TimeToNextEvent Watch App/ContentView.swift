@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewModel: CountdownViewModel
-    @StateObject var settings = SettingsStore()
+    @EnvironmentObject var settings: SettingsStore
+
+    @State private var showSettings = false
+    private let eventProvider: EventProvider = EventKitEventProvider()
 
     var body: some View {
         NavigationStack {
@@ -41,15 +44,12 @@ struct ContentView: View {
                             .font(.system(size: 36, weight: .semibold, design: .rounded))
                             .minimumScaleFactor(0.6)
                             .monospacedDigit()
-
                         Text(eventTitle)
                             .font(.headline)
                             .lineLimit(2)
                             .multilineTextAlignment(.center)
-
                         Text(startDate, style: .time)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
+                            .font(.footnote).foregroundStyle(.secondary)
                     }
 
                 case .error(let message):
@@ -57,15 +57,37 @@ struct ContentView: View {
                     Text("Something went wrong").font(.headline)
                     Text(message).font(.footnote).multilineTextAlignment(.center).foregroundStyle(.secondary)
                 }
+
+//                // Big, always-visible settings button (so it can’t be missed)
+//                Button {
+//                    showSettings = true
+//                } label: {
+//                    Label("Settings", systemImage: "gearshape")
+//                }
+//                .buttonStyle(.borderedProminent)
+//                .padding(.top, 8)
             }
             .padding()
             .onAppear { viewModel.start() }
             .onDisappear { viewModel.stop() }
             .toolbar {
-                NavigationLink(destination: SettingsView(settings: settings)) {
-                    Image(systemName: "gear")
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { showSettings = true } label: { Image(systemName: "gearshape") }
+                        .accessibilityLabel("Settings")
+                }
+            }
+            .sheet(isPresented: $showSettings) {
+                NavigationStack {
+                    SettingsView(settings: settings, eventProvider: eventProvider)
                 }
             }
         }
     }
+}
+
+#Preview {
+    ContentView(
+        viewModel: CountdownViewModel(eventProvider: MockEventProvider(), settings: SettingsStore.shared)
+    )
+    .environmentObject(SettingsStore.shared)
 }

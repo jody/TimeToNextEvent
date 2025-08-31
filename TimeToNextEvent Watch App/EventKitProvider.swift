@@ -25,6 +25,12 @@ final class EventKitEventProvider: EventProvider {
         }
     }
 
+    func listCalendars() async -> [CalendarInfo] {
+        store.calendars(for: .event).map {
+            CalendarInfo(id: $0.calendarIdentifier, title: $0.title)
+        }
+    }
+
     func nextEvent(
         after date: Date,
         allowedCalendarIDs: Set<String>?,

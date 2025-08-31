@@ -6,7 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C87AEAAE2E63DBCC00B04097 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA602E63BD6100B04097 /* WidgetKit.framework */; };
+		C87AEAAF2E63DBCC00B04097 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA622E63BD6100B04097 /* SwiftUI.framework */; };
+		C87AEAB82E63DBCD00B04097 /* TimeToNextEventWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C87AEAAD2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		C87AEAB62E63DBCD00B04097 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8E5C0A32E6392AD006A78A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C87AEAAC2E63DBCC00B04097;
+			remoteInfo = TimeToNextEventWidgetsExtension;
+		};
 		C8E5C0BF2E6392AE006A78A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C8E5C0A32E6392AD006A78A6 /* Project object */;
@@ -30,6 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C87AEAB82E63DBCD00B04097 /* TimeToNextEventWidgetsExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,14 +51,45 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C87AEA592E63BB0700B04097 /* TimeToNextEvent Watch App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TimeToNextEvent Watch App.xctestplan"; sourceTree = "<group>"; };
+		C87AEA602E63BD6100B04097 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C87AEA622E63BD6100B04097 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		C87AEA712E63BE4100B04097 /* TimetoNextEventWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimetoNextEventWidgetsExtension.entitlements; sourceTree = "<group>"; };
+		C87AEAAD2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimeToNextEventWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E5C0AF2E6392AD006A78A6 /* TimeToNextEvent Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TimeToNextEvent Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E5C0BE2E6392AE006A78A6 /* TimeToNextEvent Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TimeToNextEvent Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8E5C0C82E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TimeToNextEvent Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		C87AEAA62E63CFF900B04097 /* Exceptions for "TimeToNextEvent Watch App" folder in "TimeToNextEvent Watch AppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MockEventProvider.swift,
+			);
+			target = C8E5C0BD2E6392AE006A78A6 /* TimeToNextEvent Watch AppTests */;
+		};
+		C87AEAC12E63DD5700B04097 /* Exceptions for "TimeToNextEvent Watch App" folder in "TimeToNextEventWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SharedSnapshot.swift,
+			);
+			target = C87AEAAC2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		C87AEA642E63BD6100B04097 /* TimeToNextEventWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TimeToNextEventWidgets;
+			sourceTree = "<group>";
+		};
 		C8E5C0B32E6392AD006A78A6 /* TimeToNextEvent Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				C87AEAA62E63CFF900B04097 /* Exceptions for "TimeToNextEvent Watch App" folder in "TimeToNextEvent Watch AppTests" target */,
+				C87AEAC12E63DD5700B04097 /* Exceptions for "TimeToNextEvent Watch App" folder in "TimeToNextEventWidgetsExtension" target */,
+			);
 			path = "TimeToNextEvent Watch App";
 			sourceTree = "<group>";
 		};
@@ -61,6 +106,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C87AEAAA2E63DBCC00B04097 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C87AEAAF2E63DBCC00B04097 /* SwiftUI.framework in Frameworks */,
+				C87AEAAE2E63DBCC00B04097 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8E5C0AC2E6392AD006A78A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -85,12 +139,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C87AEA5F2E63BD6100B04097 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C87AEA602E63BD6100B04097 /* WidgetKit.framework */,
+				C87AEA622E63BD6100B04097 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C8E5C0A22E6392AD006A78A6 = {
 			isa = PBXGroup;
 			children = (
+				C87AEA712E63BE4100B04097 /* TimetoNextEventWidgetsExtension.entitlements */,
+				C87AEA592E63BB0700B04097 /* TimeToNextEvent Watch App.xctestplan */,
 				C8E5C0B32E6392AD006A78A6 /* TimeToNextEvent Watch App */,
 				C8E5C0C12E6392AE006A78A6 /* TimeToNextEvent Watch AppTests */,
 				C8E5C0CB2E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests */,
+				C87AEA642E63BD6100B04097 /* TimeToNextEventWidgets */,
+				C87AEA5F2E63BD6100B04097 /* Frameworks */,
 				C8E5C0AA2E6392AD006A78A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +168,7 @@
 				C8E5C0AF2E6392AD006A78A6 /* TimeToNextEvent Watch App.app */,
 				C8E5C0BE2E6392AE006A78A6 /* TimeToNextEvent Watch AppTests.xctest */,
 				C8E5C0C82E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests.xctest */,
+				C87AEAAD2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +176,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C87AEAAC2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C87AEAB92E63DBCD00B04097 /* Build configuration list for PBXNativeTarget "TimeToNextEventWidgetsExtension" */;
+			buildPhases = (
+				C87AEAA92E63DBCC00B04097 /* Sources */,
+				C87AEAAA2E63DBCC00B04097 /* Frameworks */,
+				C87AEAAB2E63DBCC00B04097 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimeToNextEventWidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = TimeToNextEventWidgetsExtension;
+			productReference = C87AEAAD2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8E5C0D22E6392AE006A78A6 /* Build configuration list for PBXNativeTarget "TimeToNextEvent Watch App" */;
@@ -120,6 +207,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C87AEAB72E63DBCD00B04097 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				C8E5C0B32E6392AD006A78A6 /* TimeToNextEvent Watch App */,
@@ -187,6 +275,9 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					C87AEAAC2E63DBCC00B04097 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					C8E5C0AE2E6392AD006A78A6 = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -217,11 +308,19 @@
 				C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */,
 				C8E5C0BD2E6392AE006A78A6 /* TimeToNextEvent Watch AppTests */,
 				C8E5C0C72E6392AE006A78A6 /* TimeToNextEvent Watch AppUITests */,
+				C87AEAAC2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C87AEAAB2E63DBCC00B04097 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8E5C0AD2E6392AD006A78A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,6 +345,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C87AEAA92E63DBCC00B04097 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C8E5C0AB2E6392AD006A78A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,6 +376,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C87AEAB72E63DBCD00B04097 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C87AEAAC2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension */;
+			targetProxy = C87AEAB62E63DBCD00B04097 /* PBXContainerItemProxy */;
+		};
 		C8E5C0C02E6392AE006A78A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C8E5C0AE2E6392AD006A78A6 /* TimeToNextEvent Watch App */;
@@ -283,6 +394,69 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C87AEABA2E63DBCD00B04097 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TimeToNextEventWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5A3NSS82K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeToNextEventWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimeToNextEventWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jodypaul.TimeToNextEvent.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Debug;
+		};
+		C87AEABB2E63DBCD00B04097 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TimeToNextEventWidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5A3NSS82K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeToNextEventWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimeToNextEventWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jodypaul.TimeToNextEvent.watchkitapp.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.5;
+			};
+			name = Release;
+		};
 		C8E5C0D02E6392AE006A78A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -404,6 +578,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = "TimeToNextEvent Watch App/TimeToNextEvent Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5A3NSS82K5;
@@ -434,6 +610,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = "TimeToNextEvent Watch App/TimeToNextEvent Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5A3NSS82K5;
@@ -543,6 +721,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C87AEAB92E63DBCD00B04097 /* Build configuration list for PBXNativeTarget "TimeToNextEventWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C87AEABA2E63DBCD00B04097 /* Debug */,
+				C87AEABB2E63DBCD00B04097 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C8E5C0A62E6392AD006A78A6 /* Build configuration list for PBXProject "TimeToNextEvent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

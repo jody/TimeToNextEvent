@@ -10,6 +10,7 @@ import Combine
 
 /// User preferences backing store. Keep simple for watch-only.
 final class SettingsStore: ObservableObject {
+    static let shared = SettingsStore()
 
     @Published var selectedCalendarIDs: Set<String> {
         didSet { saveSelectedCalendarIDs() }

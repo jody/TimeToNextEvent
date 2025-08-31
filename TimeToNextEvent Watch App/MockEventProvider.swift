@@ -5,9 +5,9 @@
 //  Created by Jody Paul on 8/30/25.
 //
 
+#if DEBUG
 import Foundation
 
-#if DEBUG
 final class MockEventProvider: EventProvider {
     var granted = true
     var events: [CalendarEvent] = []
@@ -17,6 +17,13 @@ final class MockEventProvider: EventProvider {
     private(set) var lastDays: Int = 0
 
     func requestAccess() async throws -> Bool { granted }
+
+    var calendars: [CalendarInfo] = [
+        CalendarInfo(id: "A", title: "Personal"),
+        CalendarInfo(id: "B", title: "Work")
+    ]
+
+    func listCalendars() async -> [CalendarInfo] { calendars }
 
     func nextEvent(
         after date: Date,
@@ -47,7 +54,7 @@ final class MockEventProvider: EventProvider {
     static var preview: MockEventProvider {
         let m = MockEventProvider()
         m.events = [
-            CalendarEvent(title: "CS Dept Standup",
+            CalendarEvent(title: "Dummy Meeting",
                           startDate: Date().addingTimeInterval(5*3600 + 12*60),
                           calendarIdentifier: "CAL-A")
         ]

@@ -11,117 +11,87 @@ import EventKit
 
 struct SettingsView: View {
     @ObservedObject var settings: SettingsStore
-    @State private var calendars: [EKCalendar] = []
-    @State private var loading = true
-    @State private var accessDenied = false
+    let eventProvider: EventProvider
 
-    private let store = EKEventStore()
+    @State private var calendars: [CalendarInfo] = []
+    @State private var isLoading = true
+    @State private var accessDenied = false
 
     var body: some View {
         List {
-            Section("Calendars") {
-                if loading {
+            // CALENDARS — always visible
+            Section {
+                NavigationLink {
+                    CalendarChooserView(
+                        calendars: calendars,
+                        selection: $settings.selectedCalendarIDs
+                    )
+                    .navigationTitle("Calendars")
+                    .task { await reloadCalendars() } // pull again on push just in case
+                } label: {
                     HStack {
-                        ProgressView()
-                        Text("Loading…")
-                    }
-                } else if accessDenied {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Calendar access is off.")
-                            .font(.headline)
-                        Text("Open the app’s permissions in Settings to choose calendars.")
-                            .font(.footnote)
+                        Text("Calendars")
+                        Spacer()
+                        Text(calendarsSummary)
                             .foregroundStyle(.secondary)
                     }
-                } else if calendars.isEmpty {
-                    Text("No calendars found.")
-                        .foregroundStyle(.secondary)
-                } else {
-                    ForEach(calendars, id: \.calendarIdentifier) { cal in
-                        Toggle(isOn: Binding<Bool>(
-                            get: { settings.selectedCalendarIDs.isEmpty ? true : settings.selectedCalendarIDs.contains(cal.calendarIdentifier) },
-                            set: { newVal in
-                                var ids = settings.selectedCalendarIDs
-                                if newVal {
-                                    ids.insert(cal.calendarIdentifier)
-                                } else {
-                                    ids.remove(cal.calendarIdentifier)
-                                }
-                                // Special handling: when user turns ALL off, treat as "all calendars" by storing empty set?
-                                // UX: we’ll prevent "all off" by leaving at least one on.
-                                if ids.isEmpty {
-                                    // Keep at least one selected: re-add the toggled-off one to avoid "none"
-                                    ids.insert(cal.calendarIdentifier)
-                                }
-                                settings.selectedCalendarIDs = ids
-                            }
-                        )) {
-                            HStack {
-                                Circle()
-                                    .fill(Color(cal.cgColor))
-                                    .frame(width: 10, height: 10)
-                                Text(cal.title)
-                            }
-                        }
+                }
+            } footer: {
+                if accessDenied {
+                    Text("Access denied. Allow Calendar access for this app on your Apple Watch.")
+                } else if calendars.isEmpty && !isLoading {
+                    Text("No calendars found. This is common on the simulator; try on a real watch.")
+                }
+            }
+
+            // LOOK-AHEAD
+            Section("Look-ahead") {
+                Picker("Days", selection: $settings.searchWindowDays) {
+                    ForEach([1,3,7,14,30,60,90], id: \.self) { d in
+                        Text("\(d) day\(d == 1 ? "" : "s")").tag(d)
                     }
-                    Text("At least one calendar must stay selected.")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
                 }
-            }
+                .pickerStyle(.navigationLink)
 
-            Section("Look-ahead window") {
-                Stepper(
-                    value: $settings.searchWindowDays,
-                    in: 1...60
-                ) {
-                    Text("\(settings.searchWindowDays) \(settings.searchWindowDays == 1 ? "day" : "days")")
-                }
-                Text("How far ahead to search for your next event.")
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-            }
-
-            Section {
-                Text("Changes take effect immediately.")
+                Text("We’ll look ahead this many days to find your next event.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
         }
         .navigationTitle("Settings")
-        .task { await loadCalendars() }
+        .task { await initialLoad() }
     }
 
-    private func loadCalendars() async {
-        loading = true
-        defer { loading = false }
+    private var calendarsSummary: String {
+        if accessDenied { return "Access denied" }
+        if isLoading { return "Loading…" }
+        if calendars.isEmpty { return "None" }
+        if settings.selectedCalendarIDs.isEmpty { return "All" }
+        let sel = calendars.filter { settings.selectedCalendarIDs.contains($0.id) }.count
+        return "\(sel) of \(calendars.count)"
+    }
+
+    @MainActor
+    private func initialLoad() async {
+        isLoading = true
+        defer { isLoading = false }
         do {
-            // If not granted yet, request; on watch this shows in-app prompt.
-            let granted: Bool = try await withCheckedThrowingContinuation { cont in
-                store.requestFullAccessToEvents { ok, err in
-                    if let err { cont.resume(throwing: err) }
-                    else { cont.resume(returning: ok) }
-                }
-            }
-            if !granted {
-                accessDenied = true
-                return
-            }
-            let cals = store.calendars(for: .event)
-            await MainActor.run { calendars = cals.sorted(by: { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }) }
+            let granted = try await eventProvider.requestAccess()
+            accessDenied = !granted
         } catch {
             accessDenied = true
         }
+        calendars = await eventProvider.listCalendars()
+            .sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
     }
-}
 
-private extension Color {
-    init(_ cgColor: CGColor?) {
-        if let cgColor { self = Color(cgColor) }
-        else { self = .accentColor }
+    @MainActor
+    private func reloadCalendars() async {
+        calendars = await eventProvider.listCalendars()
+            .sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
     }
 }
 
 #Preview {
-    SettingsView(settings: SettingsStore())
+    SettingsView(settings: SettingsStore.shared, eventProvider: MockEventProvider())
 }

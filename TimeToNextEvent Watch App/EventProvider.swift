@@ -14,9 +14,19 @@ struct CalendarEvent: Equatable {
     let calendarIdentifier: String?
 }
 
+/// Lightweight info for showing a list of calendars in Settings.
+struct CalendarInfo: Identifiable, Equatable {
+    /// Use EKCalendar.calendarIdentifier for real data sources.
+    let id: String
+    let title: String
+}
+
 protocol EventProvider {
     /// Returns true if access is granted.
     func requestAccess() async throws -> Bool
+
+    /// Lists available calendars (empty array if none / no access).
+    func listCalendars() async -> [CalendarInfo]
 
     /// Returns the very next event strictly after `date`.
     /// - Parameters:

@@ -12,7 +12,27 @@
 
   },
   "testTargets" : [
-
+    {
+      "target" : {
+        "containerPath" : "container:TimeToNextEvent.xcodeproj",
+        "identifier" : "C8E5C0BD2E6392AE006A78A6",
+        "name" : "TimeToNextEvent Watch AppTests"
+      }
+    },
+    {
+      "skippedTests" : [
+        "TimeToNextEvent_Watch_AppUITests",
+        "TimeToNextEvent_Watch_AppUITests\/testExample()",
+        "TimeToNextEvent_Watch_AppUITests\/testLaunchPerformance()",
+        "TimeToNextEvent_Watch_AppUITestsLaunchTests",
+        "TimeToNextEvent_Watch_AppUITestsLaunchTests\/testLaunch()"
+      ],
+      "target" : {
+        "containerPath" : "container:TimeToNextEvent.xcodeproj",
+        "identifier" : "C8E5C0C72E6392AE006A78A6",
+        "name" : "TimeToNextEvent Watch AppUITests"
+      }
+    }
   ],
   "version" : 1
 }
