@@ -5,7 +5,7 @@
 //  Created by Jody Paul on 8/30/25.
 //
 
-#if DEBUG
+//#if DEBUG
 import Foundation
 
 final class MockEventProvider: EventProvider {
@@ -61,4 +61,4 @@ final class MockEventProvider: EventProvider {
         return m
     }
 }
-#endif
+//#endif
