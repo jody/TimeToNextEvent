@@ -98,7 +98,8 @@ struct NextEventWidgetEntryView: View {
 @main
 struct NextEventWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "NextEventWidget", provider: NextEventProvider()) { entry in
+        StaticConfiguration(kind: "NextEventWidget",
+                            provider: NextEventProvider()) { entry in
             NextEventWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Next Event")

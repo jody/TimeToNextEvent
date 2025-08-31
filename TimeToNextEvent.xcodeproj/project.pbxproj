@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C87AEAAE2E63DBCC00B04097 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA602E63BD6100B04097 /* WidgetKit.framework */; };
-		C87AEAAF2E63DBCC00B04097 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA622E63BD6100B04097 /* SwiftUI.framework */; };
-		C87AEAB82E63DBCD00B04097 /* TimeToNextEventWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C87AEAAD2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C8250E6C2E63EB9300C7A235 /* TimeToNextEventWidgetsExtension.appex in CopyFiles */ = {isa = PBXBuildFile; fileRef = C87AEAAD2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C87AEACB2E63E55400B04097 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA622E63BD6100B04097 /* SwiftUI.framework */; };
+		C87AEACC2E63E55400B04097 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA622E63BD6100B04097 /* SwiftUI.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C87AEACE2E63E55600B04097 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA602E63BD6100B04097 /* WidgetKit.framework */; };
+		C87AEACF2E63E55600B04097 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C87AEA602E63BD6100B04097 /* WidgetKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C87AEAB62E63DBCD00B04097 /* PBXContainerItemProxy */ = {
+		C87AEAC72E63E52700B04097 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C8E5C0A32E6392AD006A78A6 /* Project object */;
 			proxyType = 1;
@@ -37,15 +39,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C8E5C1062E639A58006A78A6 /* Embed Foundation Extensions */ = {
+		C8250E6B2E63EAF700C7A235 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C87AEAB82E63DBCD00B04097 /* TimeToNextEventWidgetsExtension.appex in Embed Foundation Extensions */,
+				C8250E6C2E63EB9300C7A235 /* TimeToNextEventWidgetsExtension.appex in CopyFiles */,
 			);
-			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C87AEACD2E63E55400B04097 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C87AEACC2E63E55400B04097 /* SwiftUI.framework in Embed Frameworks */,
+				C87AEACF2E63E55600B04097 /* WidgetKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -110,8 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C87AEAAF2E63DBCC00B04097 /* SwiftUI.framework in Frameworks */,
-				C87AEAAE2E63DBCC00B04097 /* WidgetKit.framework in Frameworks */,
+				C87AEACB2E63E55400B04097 /* SwiftUI.framework in Frameworks */,
+				C87AEACE2E63E55600B04097 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +196,7 @@
 				C87AEAA92E63DBCC00B04097 /* Sources */,
 				C87AEAAA2E63DBCC00B04097 /* Frameworks */,
 				C87AEAAB2E63DBCC00B04097 /* Resources */,
+				C87AEACD2E63E55400B04097 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,12 +216,12 @@
 				C8E5C0AB2E6392AD006A78A6 /* Sources */,
 				C8E5C0AC2E6392AD006A78A6 /* Frameworks */,
 				C8E5C0AD2E6392AD006A78A6 /* Resources */,
-				C8E5C1062E639A58006A78A6 /* Embed Foundation Extensions */,
+				C8250E6B2E63EAF700C7A235 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C87AEAB72E63DBCD00B04097 /* PBXTargetDependency */,
+				C87AEAC82E63E52700B04097 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				C8E5C0B32E6392AD006A78A6 /* TimeToNextEvent Watch App */,
@@ -376,10 +390,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C87AEAB72E63DBCD00B04097 /* PBXTargetDependency */ = {
+		C87AEAC82E63E52700B04097 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C87AEAAC2E63DBCC00B04097 /* TimeToNextEventWidgetsExtension */;
-			targetProxy = C87AEAB62E63DBCD00B04097 /* PBXContainerItemProxy */;
+			targetProxy = C87AEAC72E63E52700B04097 /* PBXContainerItemProxy */;
 		};
 		C8E5C0C02E6392AE006A78A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
